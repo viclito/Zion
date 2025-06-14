@@ -6,6 +6,8 @@ import React, { useState } from 'react';
 import {data} from '@/Datas/Fish'
 import ContactForm from '@/components/ContactForm';
 
+export const dynamic = 'force-dynamic';
+
 const FishDetails = () => {
   const { id } = useParams();
 
