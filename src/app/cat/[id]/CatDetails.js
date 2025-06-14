@@ -8,19 +8,22 @@ import ContactForm from '@/components/ContactForm';
 
 export default function CatDetails() {
   const { id } = useParams();
-  const [selectedImage, setSelectedImage] = useState(''); // Initialize with empty string
+  const [cat, setCat] = useState(null);
+  const [selectedImage, setSelectedImage] = useState('');
+  const [loading, setLoading] = useState(true);
 
-  // Validate ID before proceeding
-  if (!id) return <p>Loading...</p>;
+  useEffect(() => {
+    if (id) {
+      const foundCat = data.find(c => c.id === parseInt(id));
+      setCat(foundCat);
+      setSelectedImage(foundCat?.Image || '');
+      setLoading(false);
+    }
+  }, [id]);
+
+  if (loading) return <p>Loading...</p>;
+  if (!id) return <p>No ID provided</p>;
   if (isNaN(parseInt(id))) return <p>Invalid cat ID</p>;
-
-  const cat = data.find((cat) => cat.id === parseInt(id));
-  
-  // Set initial image if cat is found
-  if (cat && !selectedImage) {
-    setSelectedImage(cat.Image);
-  }
-
   if (!cat) return <p>Cat not found</p>;
 
   return (
