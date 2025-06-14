@@ -7,10 +7,12 @@ import { data } from '@/Datas/Cat';
 import ContactForm from '@/components/ContactForm';
 
 export default function CatDetails() {
-  const { id } = useParams();
+  const key = useParams();
+  const id = key?.id
   const [cat, setCat] = useState(null);
   const [selectedImage, setSelectedImage] = useState('');
   const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {
     if (id) {
