@@ -3,8 +3,6 @@ import Navbar from '@/components/Navbar'
 import FishDetails from '@/pages/Fish/FishDetails'
 import React from 'react'
 
-export const dynamic = 'force-dynamic';
-
 const page = () => {
   return (
     <div>

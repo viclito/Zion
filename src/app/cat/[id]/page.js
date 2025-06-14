@@ -1,7 +1,7 @@
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
-import CatDetails from '@/pages/Cats/CatDetails'
 import React from 'react'
+import CatDetails from './CatDetails';
 
 export const dynamic = 'force-dynamic';
 

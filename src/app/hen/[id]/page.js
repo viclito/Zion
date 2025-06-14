@@ -3,8 +3,6 @@ import Navbar from '@/components/Navbar'
 import HenDetails from '@/pages/Hen/HenDetails'
 import React from 'react'
 
-export const dynamic = 'force-dynamic';
-
 const page = () => {
   return (
     <div>

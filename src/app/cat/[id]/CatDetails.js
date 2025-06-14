@@ -1,3 +1,4 @@
+'use client'
 
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
@@ -6,11 +7,14 @@ import { data} from '@/Datas/Cat'
 import ContactForm from '@/components/ContactForm';
 
 const CatDetails = () => {
-  const { id } = useParams();
-
-
-  const cat = data.find((cat) => cat.id === parseInt(id));
-  const [selectedImage, setSelectedImage] = useState(cat?.Image);
+ const { id } = useParams();
+  
+ // Handle loading/error states
+ if (!id) return <p>Loading...</p>;
+ if (isNaN(parseInt(id))) return <p>Invalid cat ID</p>;
+ 
+ const cat = data.find((cat) => cat.id === parseInt(id));
+ const [selectedImage, setSelectedImage] = useState(cat?.Image || '');
 
   if (!cat) {
     return <p>Cat not found</p>;
