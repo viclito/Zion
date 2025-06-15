@@ -12,8 +12,8 @@ export const data = [
     name: 'Maine Coon',
     avail:'available',
     description:"Maine Coon cats are known to have originated in Maine. However, their lineage is surrounded by mystery, folk tales, and myths. One myth claims the Maine Coon cat is a hybrid with another animal species, such as the raccoon or bobcat. The second myth states the cats are descendants of Viking ship's cats, known today as the Norwegian Forest cats.",
-    Image: '/Cat/maine coon.jpg',
-    Images: ['/Cat/maine coon.jpg', '/Cat/maine coon1.jpg', '/Cat/maine coon2.jpg', '/Cat/maine coon3.jpg']
+    Image: '/Cat/Maine Coon.jpg',
+    Images: ['/Cat/Maine Coon.jpg', '/Cat/Maine Coon1.jpg', '/Cat/Maine Coon2.jpg', '/Cat/Maine Coon3.jpg']
   },
   
 ];
