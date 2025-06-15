@@ -17,7 +17,7 @@ export default function Page({ params }) {
 }
 
 export async function generateStaticParams() {
-  // Generate static paths for all fishs in the data array
+  // Generate static paths for all fish in the data array
   return data.map((fish) => ({
     id: fish.id.toString(),
   }));

@@ -62,7 +62,7 @@ export default function FishDetails({ fish }) {
 
           <p className="text-sm mt-2 w-[90%] text-justify">For More Details and To Contact Us</p>
 
-          <ContactForm fishName={fish.name} fishegory="Fish" />
+          <ContactForm fishName={fish.name} category="Fish" />
         </div>
       </div>
       <Footer />
