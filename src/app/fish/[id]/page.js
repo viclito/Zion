@@ -7,7 +7,9 @@ export default function Page({ params }) {
   const { id } = params;
 
   // Find the fish in the static data array
-  const fish = data.find((c) => c.id === parseInt(id));
+  if(id){
+    const fish = data.find((c) => c?.id === parseInt(id));
+  }
 
   if (!fish) {
     return <p>Fish not found</p>;
@@ -16,4 +18,3 @@ export default function Page({ params }) {
   return <FishDetails fish={fish} />; // Pass the fish data to the Client Component
 }
 
-// Remove generateStaticParams to avoid prerendering
