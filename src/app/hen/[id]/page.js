@@ -1,16 +1,24 @@
-import Footer from '@/components/Footer'
-import Navbar from '@/components/Navbar'
-import HenDetails from '@/pages/Hen/HenDetails'
-import React from 'react'
+import HenDetails from './HenDetails'; // Import the Client Component
+import { data } from '@/Datas/Hen';
 
-const page = () => {
-  return (
-    <div>
-        <Navbar/>
-        <HenDetails/>
-        <Footer/>
-    </div>
-  )
+export const dynamic = 'force-dynamic'; // Force dynamic rendering
+
+export default function Page({ params }) {
+  const { id } = params;
+
+  // Find the hen in the static data array
+  const hen = data.find((c) => c.id === parseInt(id));
+
+  if (!hen) {
+    return <p>Hen not found</p>;
+  }
+
+  return <HenDetails hen={hen} />; // Pass the hen data to the Client Component
 }
 
-export default page
+export async function generateStaticParams() {
+  // Generate static paths for all hens in the data array
+  return data.map((hen) => ({
+    id: hen.id.toString(),
+  }));
+}
