@@ -16,9 +16,4 @@ export default function Page({ params }) {
   return <FishDetails fish={fish} />; // Pass the fish data to the Client Component
 }
 
-export async function generateStaticParams() {
-  // Generate static paths for all fish in the data array
-  return data.map((fish) => ({
-    id: fish.id.toString(),
-  }));
-}
+// Remove generateStaticParams to avoid prerendering
