@@ -15,7 +15,7 @@ const HenList = () => {
 
   return (
     <>
-    <Landing image='/Hen/hen.jpg'/>
+    <Landing image='/Hen/bantam4.jpg'/>
     <div className="h-auto p-4 max-w-[1350px] m-auto">
       {/* Search Button */}
       <div className="flex justify-end mb-4">

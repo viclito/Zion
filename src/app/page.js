@@ -7,6 +7,7 @@ import StockSection from "@/pages/landing/StockSection";
 import Silkie from "@/pages/landing/Silkie";
 import ScrollPage from "@/pages/landing/ScrollPage";
 import Footer from "@/components/Footer";
+import SideContact from "@/components/SideContact";
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
         <Silkie/>
       </div>
       <Footer/>
+      <SideContact/>
     </>
   );
 }

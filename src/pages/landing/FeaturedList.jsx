@@ -7,7 +7,7 @@ const FeaturedList = () => {
       title: "Wide Range of Pet Breeds",
       description:
         "From adorable puppies and kittens to exotic birds and hen breeds like Silkies, we have the perfect companion for your home.",
-      icon: "/pet-care.jpg",
+      icon: "/Pleasant/pleasant2.jpg",
     },
     {
       title: "Premium Pet Products",
@@ -25,7 +25,7 @@ const FeaturedList = () => {
       title: "Expert Pet Care Guidance",
       description:
         "Our experienced staff offers guidance on pet health, nutrition, and training to keep your pets happy and healthy.",
-      icon: "/pet-care.jpg", // Replace with actual pet care icon
+      icon: "/Pleasant/pleasant4.jpg", // Replace with actual pet care icon
     },
   ];
 

@@ -62,7 +62,7 @@ export default function HenDetails({ hen }) {
 
           <p className="text-sm mt-2 w-[90%] text-justify">For More Details and To Contact Us</p>
 
-          <ContactForm henName={hen.name} henegory="Hen" />
+          <ContactForm name={hen.name} category="Hen" />
         </div>
       </div>
       <Footer />

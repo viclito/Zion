@@ -11,7 +11,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="w-full bg-gray-100 border-b border-gray-300">
+    <nav className="w-full bg-white border-b border-gray-300">
       <div className="max-w-[1200px] m-auto flex items-center justify-between py-4 px-6">
         {/* Logo */}
         <div className="flex items-center">
@@ -27,23 +27,23 @@ const Navbar = () => {
               </a>
             </li>
             <li>
-              <a href="/dog" className="hover:text-gray-700">
-                Dog
+              <a href="/silkie" className="hover:text-gray-700">
+                Silkie
               </a>
             </li>
             <li>
+              <Link href="/pleasant" className="hover:text-gray-700">
+                Pleasant
+              </Link>
+            </li>
+            <li>
+              <Link href="/bramma" className="hover:text-gray-700">
+                Bramma
+              </Link>
+            </li>
+            <li>
               <Link href="/hen" className="hover:text-gray-700">
-                Hen
-              </Link>
-            </li>
-            <li>
-              <Link href="/cat" className="hover:text-gray-700">
-                Cat
-              </Link>
-            </li>
-            <li>
-              <Link href="/fish" className="hover:text-gray-700">
-                Fish
+                Fancy hen
               </Link>
             </li>
             <li>
@@ -91,8 +91,8 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link href="/dog" className="hover:text-gray-700">
-                Dog
+              <Link href="/silkie" className="hover:text-gray-700">
+                Silkie
               </Link>
             </li>
             <li>

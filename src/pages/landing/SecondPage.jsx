@@ -52,7 +52,7 @@ export default function SecondPage() {
   }, []);
 
   return (
-    <div className="relative w-full bg-black text-white">
+    <div className="relative w-full bg-gray-800 text-white">
       <h1 className="text-center text-3xl py-6">Variety Of Hens</h1>
       <div
         ref={containerRef}

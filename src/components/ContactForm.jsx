@@ -2,12 +2,12 @@
 
 import React, { useState } from "react";
 
-const ContactForm = ({ category, dogName }) => {
+const ContactForm = ({ category, name }) => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     address: '',
-    dogName: dogName,
+    name: name,
     category: category
   });
   
@@ -41,7 +41,7 @@ const ContactForm = ({ category, dogName }) => {
           name: '',
           phone: '',
           address: '',
-          dogName: dogName,
+          name: name,
           category: category
         });
       } else {
@@ -60,7 +60,7 @@ const ContactForm = ({ category, dogName }) => {
 
   return (
     <div className="mt-6 w-[90%] relative">
-      <h2 className="text-sm font-semibold mb-4">Contact About {dogName}</h2>
+      <h2 className="text-sm font-semibold mb-4">Contact About {name}</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Form fields remain the same */}
         <div>
@@ -142,7 +142,7 @@ const ContactForm = ({ category, dogName }) => {
               </svg>
               <h3 className="mt-2 text-lg font-medium text-gray-900">Message Received!</h3>
               <div className="mt-2 text-sm text-gray-500">
-                <p>Thank you for your interest in {dogName}. We've received your message and will contact you shortly.</p>
+                <p>Thank you for your interest in {name}. We've received your message and will contact you shortly.</p>
               </div>
               <div className="mt-4">
                 <button

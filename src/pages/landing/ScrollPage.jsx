@@ -74,16 +74,16 @@ const ScrollPage = () => {
   }, []);
 
   const items = [
-    // Dogs (1 & 5)
-    {   title: 'Loyal Companions',   subtitle: 'Premium dog breeds with excellent temperaments',  image: '/scroll1.jpeg' , to: '/dog'},
-    {   title: 'Elegant Felines',   subtitle: 'Beautiful cats with unique personalities',  image: '/scroll2.jpeg' , to: '/dog'},
-    {   title: 'Productive Hens',   subtitle: 'Healthy poultry for eggs and companionship',  image: '/scroll3.jpeg' , to: '/dog'},
-    {   title: 'Vibrant Aquatics',   subtitle: 'Colorful fish for your home aquarium',  image: '/scroll4.jpeg' , to: '/dog'},
-    {   title: 'Dog Essentials',   subtitle: 'Everything to keep your pup happy and healthy',  image: '/scroll5.jpeg' , to: '/dog'},
-    {   title: 'Feline Care',   subtitle: "Specialized products for your cat's wellbeing",  image: '/scroll6.jpeg' , to: '/dog'},
-    {   title: 'Backyard Flocks',   subtitle: 'Everything you need for raising happy hens',  image: '/scroll7.jpeg' , to: '/dog'},
-    {   title: 'Aquarium Setup',   subtitle: 'Complete solutions for your underwater world',  image: '/scroll8.jpeg' , to: '/dog'},
+    {   title: 'Majestic Fancy Hens',   subtitle: 'Explore premium breeds with stunning plumage and calm temperaments',   image: '/scroll1.jpg',   to: '/pleasant' },
+    {   title: 'Graceful Hens',   subtitle: 'Elegant, colorful hens with unique personalities and charm',   image: '/scroll2.jpg',   to: '/pleasant' },
+    {   title: 'Egg-Laying Beauties',   subtitle: 'Healthy fancy hens perfect for eggs and companionship',   image: '/scroll3.jpg',   to: '/pleasant' },
+    {   title: 'Hen Habitat Essentials',   subtitle: 'Create a vibrant, cozy space for your backyard hens',   image: '/scroll4.jpg',   to: '/pleasant' },
+    {   title: 'Feeding Your Fancy Hens',   subtitle: 'Nutrition and treats to keep your hens happy and healthy',   image: '/scroll5.jpg',   to: '/hen' },
+    {   title: 'Hen Care Basics',   subtitle: 'Everything you need for grooming, health, and comfort',   image: '/scroll6.jpg',   to: '/hen' },
+    {   title: 'Breeds & Broods',   subtitle: 'Discover exotic fancy hen breeds for your backyard flock',   image: '/scroll7.jpeg',   to: '/hen' },
+    {   title: 'Fancy Hen Coops',   subtitle: 'Stylish, safe, and functional homes for your hens',   image: '/scroll8.jpg',   to: '/hen' },
   ];
+
 
   return (
     <div className="relative w-full overflow-hidden py-12">
