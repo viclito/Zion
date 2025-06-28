@@ -96,18 +96,18 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
+              <Link href="/pleasant" className="hover:text-gray-700">
+                Pleasant
+              </Link>
+            </li>
+            <li>
+              <Link href="/bramma" className="hover:text-gray-700">
+                Bramma
+              </Link>
+            </li>
+            <li>
               <Link href="/hen" className="hover:text-gray-700">
-                Hen
-              </Link>
-            </li>
-            <li>
-              <Link href="/cat" className="hover:text-gray-700">
-                Cat
-              </Link>
-            </li>
-            <li>
-              <Link href="/fish" className="hover:text-gray-700">
-                Fish
+                Fancy hen
               </Link>
             </li>
             <li>

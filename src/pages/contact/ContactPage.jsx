@@ -98,7 +98,7 @@ const ContactPage = () => {
                   <div className="ml-4">
                     <h3 className="text-xs font-medium text-gray-500">Phone</h3>
                     <a href="tel:+916381877181" className="text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors">
-                      +91 6381 877 181
+                      +91 6381877181
                     </a>
                   </div>
                 </div>
