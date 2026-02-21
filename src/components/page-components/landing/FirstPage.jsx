@@ -23,11 +23,11 @@ const FirstPage = () => {
       rotation: -5,
       ease: "elastic.out(1, 0.75)"
     }, "-=0.8")
-    .from(".hero-title span", {
+    .from(".hero-logo", {
       y: 50,
-      scale: 0.5,
+      scale: 0.8,
       opacity: 0,
-      stagger: 0.1,
+      duration: 0.8,
     }, "-=1.0")
     .from(".hero-text", {
       y: 20,
@@ -59,10 +59,17 @@ const FirstPage = () => {
             ✨ Premium Fancy Hens
           </div>
           
-          <h1 className="hero-title text-6xl md:text-8xl lg:text-9xl font-black text-[var(--text-primary)] leading-[1] mb-6 flex flex-wrap justify-center md:justify-start gap-x-4">
-            <span className="text-[var(--accent-coral)] drop-shadow-sm">ZION</span>
-            <span className="text-[var(--accent-teal)] drop-shadow-sm">PETS</span>
-          </h1>
+          <div className="hero-logo w-full max-w-[280px] sm:max-w-[350px] md:max-w-[550px] mb-6 mx-auto md:mx-0 flex justify-center md:justify-start">
+            <Image 
+              src="/landimg.png" 
+              alt="Zion Pets Logo Wordmark" 
+              width={600} 
+              height={300} 
+              className="w-full h-auto object-contain rounded-xl" 
+              priority 
+            />
+          </div>
+          <h1 className="sr-only">Zion Pets</h1>
 
           <p className="hero-text text-xl md:text-2xl text-[var(--text-primary)] font-medium leading-relaxed max-w-lg mb-10">
             Joyful companions for a happy home! Discover our beautiful collection of friendly Silkies, majestic Brammas, and more.
