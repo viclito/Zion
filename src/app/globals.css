@@ -2,28 +2,33 @@
 
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-primary: #FFFDF2; /* Warm pastel yellow/cream */
+  --text-primary: #2B1055; /* Deep Navy/Purple */
+  --accent-coral: #FF6B6B;
+  --accent-teal: #4D96FF;
+  --accent-yellow: #FFD93D;
+  --accent-mint: #6BCB77;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-bg-primary: var(--bg-primary);
+  --color-text-primary: var(--text-primary);
+  --color-accent-coral: var(--accent-coral);
+  --color-accent-teal: var(--accent-teal);
+  --color-accent-yellow: var(--accent-yellow);
+  --color-accent-mint: var(--accent-mint);
+  --font-sans: var(--font-nunito), sans-serif;
+  --font-display: var(--font-fredoka), sans-serif;
 }
 
 body {
-  color: var(--background);
-  background: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
 }
 
 .widthIncrease {

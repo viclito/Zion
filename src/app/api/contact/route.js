@@ -1,11 +1,23 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { createInquiry } from '@/services/inquiry.service';
 
 export async function POST(request) {
+  console.log("Triggering HMR for POST /api/contact");
   const { name, phone, address, dogName , category} = await request.json();
 
   try {
-    // Create transporter
+    // 1. Save to Database first
+    await createInquiry({
+      name,
+      phone,
+      subject: `Inquiry about ${dogName}`,
+      message: `Address: ${address}`,
+      category: category,
+      type: 'Pet Inquiry',
+    });
+
+    // 2. Create transporter
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -14,7 +26,7 @@ export async function POST(request) {
       },
     });
 
-    // Email options
+    // 3. Email options
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: process.env.YOUR_EMAIL,
@@ -34,7 +46,7 @@ export async function POST(request) {
       `,
     };
 
-    // Send email
+    // 4. Send email alert
     await transporter.sendMail(mailOptions);
 
     return NextResponse.json({ success: true });

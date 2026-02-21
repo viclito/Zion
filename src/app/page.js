@@ -1,30 +1,27 @@
-import FirstPage from "@/pages/landing/FirstPage";
+import FirstPage from "@/components/page-components/landing/FirstPage";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
-import SecondPage from "@/pages/landing/SecondPage";
-import FeaturedList from "@/pages/landing/FeaturedList";
-import StockSection from "@/pages/landing/StockSection";
-import Silkie from "@/pages/landing/Silkie";
-import ScrollPage from "@/pages/landing/ScrollPage";
+import OffersSection from "@/components/OffersSection";
+import SecondPage from "@/components/page-components/landing/SecondPage";
+import FeaturedList from "@/components/page-components/landing/FeaturedList";
+import StockSection from "@/components/page-components/landing/StockSection";
+import Silkie from "@/components/page-components/landing/Silkie";
+import ScrollPage from "@/components/page-components/landing/ScrollPage";
 import Footer from "@/components/Footer";
 import SideContact from "@/components/SideContact";
 
 export default function Home() {
   return (
-    <>
+    <div className="bg-[var(--bg-primary)]">
       <Navbar />
-      <div className="max-w-[1200px] m-auto">
-        <FirstPage />
-        <ScrollPage/>
-        <FeaturedList />
-      </div>
+      <FirstPage />
+      <OffersSection />
+      <ScrollPage/>
+      <FeaturedList />
       <SecondPage />
-      <div className="max-w-[1200px] m-auto">
-        {/* <StockSection /> */}
-        <Silkie/>
-      </div>
+      <Silkie/>
       <Footer/>
       <SideContact/>
-    </>
+    </div>
   );
 }

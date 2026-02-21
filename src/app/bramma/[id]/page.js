@@ -1,19 +1,30 @@
-import BrammaDetails from './BrammaDetails'; // Import the Client Component
-import { data } from '@/Datas/Bramma';
+'use client';
 
-export const dynamic = 'force-dynamic'; // Force dynamic rendering
+import { useParams } from 'next/navigation';
+import BrammaDetails from './BrammaDetails';
+import { usePet } from '@/hooks/usePets';
 
-export default function Page({ params }) {
-  const { id } = params;
+export default function Page() {
+  const params = useParams();
+  const id = params?.id;
 
+  const { data: bramma, isLoading, isError } = usePet(id);
 
-  const bramma = data.find((c) => c?.id === parseInt(id));
-
-
-  if (!bramma) {
-    return <p>Bramma not found</p>;
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[var(--bg-primary)]">
+         <p className="text-2xl font-black text-[var(--accent-teal)] animate-pulse">Loading clucker details... ⏳</p>
+      </div>
+    );
   }
 
-  return <BrammaDetails bramma={bramma} />; // Pass the bramma data to the Client Component
-}
+  if (isError || !bramma) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[var(--bg-primary)]">
+        <p className="text-2xl font-black text-[var(--accent-coral)]">Bramma not found 🚨</p>
+      </div>
+    );
+  }
 
+  return <BrammaDetails bramma={bramma} />;
+}

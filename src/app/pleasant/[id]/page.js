@@ -1,18 +1,30 @@
-import PleasantDetails from './PleasantDetails'; // Import the Client Component
-import { data } from '@/Datas/Pleasant';
+'use client';
 
-export const dynamic = 'force-dynamic'; // Force dynamic rendering
+import { useParams } from 'next/navigation';
+import PleasantDetails from './PleasantDetails';
+import { usePet } from '@/hooks/usePets';
 
-export default function Page({ params }) {
-  const { id } = params;
+export default function Page() {
+  const params = useParams();
+  const id = params?.id;
 
-  // Find the pleasant in the static data array
-  const pleasant = data.find((c) => c.id === parseInt(id));
+  const { data: pleasant, isLoading, isError } = usePet(id);
 
-  if (!pleasant) {
-    return <p>Pleasant not found</p>;
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[var(--bg-primary)]">
+         <p className="text-2xl font-black text-[var(--accent-teal)] animate-pulse">Loading clucker details... ⏳</p>
+      </div>
+    );
   }
 
-  return <PleasantDetails pleasant={pleasant} />; // Pass the pleasant data to the Client Component
-}
+  if (isError || !pleasant) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[var(--bg-primary)]">
+        <p className="text-2xl font-black text-[var(--accent-coral)]">Pleasant not found 🚨</p>
+      </div>
+    );
+  }
 
+  return <PleasantDetails pleasant={pleasant} />;
+}

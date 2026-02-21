@@ -1,7 +1,9 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { createInquiry } from '@/services/inquiry.service';
 
 export async function POST(request) {
+  console.log("Triggering HMR for POST /api/mainContact");
   const { name, email, phone, message, subject } = await request.json();
 
   try {
@@ -13,7 +15,17 @@ export async function POST(request) {
       );
     }
 
-    // Create transporter
+    // 1. Save to Database first
+    await createInquiry({
+      name,
+      email,
+      phone: phone || 'Not provided',
+      subject: subject || 'General Contact',
+      message,
+      type: 'General Contact',
+    });
+
+    // 2. Create transporter
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -22,7 +34,7 @@ export async function POST(request) {
       },
     });
 
-    // Email options
+    // 3. Email options
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: process.env.YOUR_EMAIL,
@@ -45,7 +57,7 @@ export async function POST(request) {
       `,
     };
 
-    // Send email
+    // 4. Send email alert
     await transporter.sendMail(mailOptions);
 
     return NextResponse.json({ success: true });

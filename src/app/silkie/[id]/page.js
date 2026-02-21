@@ -1,24 +1,30 @@
-import SilkieDetails from './SilkieDetails'; // Import the Client Component
-import { data } from '@/Datas/Silkie';
+'use client';
 
-export const dynamic = 'force-dynamic'; // Force dynamic rendering
+import { useParams } from 'next/navigation';
+import SilkieDetails from './SilkieDetails';
+import { usePet } from '@/hooks/usePets';
 
-export default function Page({ params }) {
-  const { id } = params;
+export default function Page() {
+  const params = useParams();
+  const id = params?.id;
 
-  // Find the silkie in the static data array
-  const silkie = data.find((c) => c.id === parseInt(id));
+  const { data: silkie, isLoading, isError } = usePet(id);
 
-  if (!silkie) {
-    return <p>Silkie not found</p>;
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[var(--bg-primary)]">
+         <p className="text-2xl font-black text-[var(--accent-teal)] animate-pulse">Loading clucker details... ⏳</p>
+      </div>
+    );
   }
 
-  return <SilkieDetails silkie={silkie} />; // Pass the silkie data to the Client Component
-}
+  if (isError || !silkie) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[var(--bg-primary)]">
+        <p className="text-2xl font-black text-[var(--accent-coral)]">Silkie not found 🚨</p>
+      </div>
+    );
+  }
 
-export async function generateStaticParams() {
-  // Generate static paths for all silkies in the data array
-  return data.map((silkie) => ({
-    id: silkie.id.toString(),
-  }));
+  return <SilkieDetails silkie={silkie} />;
 }

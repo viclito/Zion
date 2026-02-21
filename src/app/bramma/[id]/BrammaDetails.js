@@ -4,11 +4,11 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import ContactForm from '@/components/ContactForm';
+import OrderSection from '@/components/OrderSection';
 
 export default function BrammaDetails({ bramma }) {
   // Initialize the state with the default big image
-  const [selectedImage, setSelectedImage] = useState(bramma.Image);
+  const [selectedImage, setSelectedImage] = useState(bramma.mainImage);
 
   return (
     <>
@@ -17,10 +17,10 @@ export default function BrammaDetails({ bramma }) {
         <div className="w-[90%] m-auto md:w-[50%] h-[600px] overflow-hidden rounded-lg flex flex-col-reverse md:flex-row justify-start gap-2">
           {/* Small Images */}
           <div className="flex md:flex-col flex-row gap-2">
-            {bramma.Images.map((item, i) => (
+            {[bramma.mainImage, ...(bramma.gallery || []).filter(img => img)].map((item, i) => (
               <div
                 key={i}
-                className="w-[50px] h-[50px] rounded-lg overflow-hidden cursor-pointer"
+                className="w-[50px] h-[50px] rounded-lg overflow-hidden cursor-pointer border-2 hover:border-[var(--text-primary)] transition-all"
                 onClick={() => setSelectedImage(item)} // Update the big image on click
               >
                 <Image
@@ -28,41 +28,67 @@ export default function BrammaDetails({ bramma }) {
                   alt={`${bramma.name} thumbnail ${i}`}
                   width={100}
                   height={100}
-                  className="w-full h-full"
+                  className="w-full h-full object-cover"
                 />
               </div>
             ))}
           </div>
 
           {/* Big Image */}
-          <div className="md:w-[70%] w-full rounded-lg overflow-hidden">
+          <div className="md:w-[70%] w-full rounded-lg overflow-hidden border-4 border-[var(--text-primary)] shadow-[6px_6px_0px_var(--text-primary)] relative bg-[var(--accent-mint)]">
             <Image
               src={selectedImage} // Use the selected image
               alt={bramma.name}
-              width={400}
-              height={400}
+              fill
               className="w-full h-full object-cover"
             />
           </div>
         </div>
 
         {/* Bramma Details */}
-        <div className="w-[90%] md:w-[50%] m-auto my-2">
-          <h1 className="text-xl font-semibold mt-4">{bramma.name}</h1>
-          <p className="text-sm text-gray-600 mt-2 w-[90%] text-justify">{bramma.description}</p>
-          {bramma.avail === 'available' ? (
-            <p className="text-xs px-2 py-0.5 rounded-lg text-white inline my-2 bg-green-700 pb-1">
-              {bramma.avail}
-            </p>
-          ) : (
-            <p className="text-xs px-2 py-0.5 rounded-lg text-white inline my-2 bg-red-700 pb-1">
-              {bramma.avail}
-            </p>
-          )}
+        <div className="w-[90%] md:w-[50%] m-auto my-6 flex flex-col justify-center">
+          <h1 className="text-4xl md:text-6xl font-black text-[var(--text-primary)] mb-6 drop-shadow-[3px_3px_0px_var(--accent-mint)]">{bramma.name}</h1>
+          
+          {/* Price Block */}
+          <div className="flex items-center gap-4 mb-6 flex-wrap">
+            {bramma.discountedPrice ? (
+              <>
+                <span className="text-3xl md:text-4xl font-black text-[var(--text-primary)] bg-[var(--accent-mint)] px-4 py-1 rounded-xl border-4 border-[var(--text-primary)] shadow-[4px_4px_0px_var(--text-primary)]">
+                  ₹{bramma.discountedPrice.toLocaleString('en-IN')}
+                </span>
+                <span className="text-xl font-bold text-[var(--text-primary)] opacity-60 line-through decoration-4 decoration-[var(--accent-coral)]">
+                  ₹{bramma.basePrice?.toLocaleString('en-IN')}
+                </span>
+                <span className="px-3 py-1 rounded-full bg-[var(--accent-yellow)] border-4 border-[var(--text-primary)] text-xs font-black uppercase text-[var(--text-primary)] shadow-[4px_4px_0px_var(--text-primary)] rotate-6 animate-pulse">
+                  SALE!
+                </span>
+              </>
+            ) : (
+              <span className="text-3xl md:text-4xl font-black text-[var(--text-primary)] bg-[var(--accent-mint)] px-4 py-1 rounded-xl border-4 border-[var(--text-primary)] shadow-[4px_4px_0px_var(--text-primary)]">
+                ₹{bramma.basePrice?.toLocaleString('en-IN') || 'Price Unset'}
+              </span>
+            )}
+          </div>
+          
+          <div className="mb-8">
+            {bramma.avail === 'available' ? (
+              <span className="px-4 py-2 rounded-full border-4 border-[var(--text-primary)] text-sm font-black uppercase shadow-[4px_4px_0px_var(--text-primary)] bg-[var(--accent-mint)] text-[var(--text-primary)]">
+                {bramma.avail}
+              </span>
+            ) : (
+              <span className="px-4 py-2 rounded-full border-4 border-[var(--text-primary)] text-sm font-black uppercase shadow-[4px_4px_0px_var(--text-primary)] bg-[var(--accent-coral)] text-white">
+                {bramma.avail}
+              </span>
+            )}
+          </div>
+          
+          <h3 className="text-xl font-black text-[var(--text-primary)] mb-3 uppercase tracking-wider relative inline-block">
+             <span className="relative z-10">About this Breed</span>
+             <span className="absolute bottom-1 left-0 w-full h-3 bg-[var(--accent-mint)] -z-10 -rotate-1 opacity-70"></span>
+          </h3>
+          <p className="text-base font-medium text-[var(--text-primary)] opacity-80 mb-10 w-[90%] text-justify leading-relaxed">{bramma.description}</p>
 
-          <p className="text-sm mt-2 w-[90%] text-justify">For More Details and To Contact Us</p>
-
-          <ContactForm name={bramma.name} category="Bramma" />
+          <OrderSection pet={bramma} />
         </div>
       </div>
       <Footer />

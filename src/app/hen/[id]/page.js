@@ -1,24 +1,30 @@
-import HenDetails from './HenDetails'; // Import the Client Component
-import { data } from '@/Datas/Hen';
+'use client';
 
-export const dynamic = 'force-dynamic'; // Force dynamic rendering
+import { useParams } from 'next/navigation';
+import HenDetails from './HenDetails';
+import { usePet } from '@/hooks/usePets';
 
-export default function Page({ params }) {
-  const { id } = params;
+export default function Page() {
+  const params = useParams();
+  const id = params?.id;
 
-  // Find the hen in the static data array
-  const hen = data.find((c) => c.id === parseInt(id));
+  const { data: hen, isLoading, isError } = usePet(id);
 
-  if (!hen) {
-    return <p>Hen not found</p>;
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[var(--bg-primary)]">
+         <p className="text-2xl font-black text-[var(--accent-teal)] animate-pulse">Loading clucker details... ⏳</p>
+      </div>
+    );
   }
 
-  return <HenDetails hen={hen} />; // Pass the hen data to the Client Component
-}
+  if (isError || !hen) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[var(--bg-primary)]">
+        <p className="text-2xl font-black text-[var(--accent-coral)]">Hen not found 🚨</p>
+      </div>
+    );
+  }
 
-export async function generateStaticParams() {
-  // Generate static paths for all hens in the data array
-  return data.map((hen) => ({
-    id: hen.id.toString(),
-  }));
+  return <HenDetails hen={hen} />;
 }
